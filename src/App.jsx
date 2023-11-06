@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Confetti from 'react-confetti'
 import Die from './components/Die';
 
@@ -9,6 +9,15 @@ export default function App() {
   function randomDieValue() {
     return Math.ceil(Math.random() * 6);
   }
+
+  useEffect(()=>{
+    const allHeld = dice.every(die => die.held)
+    const firstValue = dice[0].value;
+    const allSsameValue = dice.every(die => die.value === firstValue)
+    if(allHeld && allSsameValue){
+      setTenzies(true)
+    }
+  },[dice])
 
   function allNewDice() {
     const newArray = [];
@@ -40,11 +49,6 @@ export default function App() {
         die.id === id ? { ...die, held: !die.held } : die
       )
     );
-    const firstValue = dice[0].value;
-  const allDiceSame = dice.every(die => die.value === firstValue);
-  if (allDiceSame) {
-    setTenzies(true);
-  }
   }
 
   const diceElements = dice.map(die => (
