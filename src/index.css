@@ -33,9 +33,10 @@ p{
 
 .die-container{
   display: grid;
-  grid-template-columns: auto auto / repeat(5, 1fr);
+  grid-template: auto auto / repeat(5, 1fr);
   gap: 20px;
   margin-bottom: 40px ;
+  
 }
 
 .die-face {
@@ -48,6 +49,7 @@ p{
   align-items: center;
   cursor: pointer;
   box-shadow: 0px 3.57447px 3.57447px rgba(0,0,0,0.1);
+  
 }
 
 .die-num {
